@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>潇授</title>
+    <description>欢迎来到我的个人站~</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 11 Sep 2019 10:50:16 +0800</pubDate>
+    <lastBuildDate>Wed, 11 Sep 2019 10:50:16 +0800</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>ubuntu Jekyll安装</title>
+        <description>&lt;h1 id=&quot;ubuntu-jekyll安装&quot;&gt;ubuntu Jekyll安装&lt;/h1&gt;
+
+&lt;h3 id=&quot;ruby安装&quot;&gt;Ruby安装&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install ruby-full
+
+$ ruby -v
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;rubygems安装&quot;&gt;RubyGems安装&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1.https://rubygems.org/pages/download
+2.解压缩到目录cd中
+3.sudo ruby setup.rb
+4.gem -v
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;gcc-and-make&quot;&gt;GCC and Make&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gcc -v
+g++ -v
+make -v
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;确保拥有所有必需的依赖项&quot;&gt;确保拥有所有必需的依赖项&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install ruby-full build-essential zlib1g-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;将环境变量添加到bashrc文件以配置gem安装路径&quot;&gt;将环境变量添加到&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt;文件以配置gem安装路径&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;echo '# Install Ruby Gems to ~/gems' &amp;gt;&amp;gt; ~/.bashrc
+echo 'export GEM_HOME=&quot;$HOME/gems&quot;' &amp;gt;&amp;gt; ~/.bashrc
+echo 'export PATH=&quot;$HOME/gems/bin:$PATH&quot;' &amp;gt;&amp;gt; ~/.bashrc
+source ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;安装jekyll&quot;&gt;安装Jekyll：&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install jekyll bundler
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;创建新gemfile列表&quot;&gt;创建新Gemfile列表&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;编辑gemfile并添加jekyll作为依赖项&quot;&gt;编辑Gemfile并添加jekyll作为依赖项&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &quot;jekyll&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;最后运行bundle为项目安装jekyll&quot;&gt;最后运行&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle&lt;/code&gt;为项目安装jekyll。&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;构建站点&quot;&gt;构建站点&lt;/h1&gt;
+&lt;h3 id=&quot;站点的根目录中运行&quot;&gt;站点的根目录中运行&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll build 构建站点并将静态站点输出到名为的目录_site
+jekyll serve 运行本地Web服务器 http://localhost:4000
+bundle exec jekyll serve
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;jekyll目录结构&quot;&gt;jekyll目录结构&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;_posts 博客内容
+_pages 其他需要生成的网页，如About页
+_layouts 网页排版模板
+_includes 被模板包含的HTML片段，可在_config.yml中修改位置
+assets 辅助资源 css布局 js脚本 图片等
+_data 动态数据
+_sites 最终生成的静态网页
+_config.yml 网站的一些配置信息
+index.html 网站的入口
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Wed, 11 Sep 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/09/Jekyll%E5%AE%89%E8%A3%85/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/09/Jekyll%E5%AE%89%E8%A3%85/</guid>
+        
+        <category>工具</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>ES6新特性</title>
+        <description>&lt;h1 id=&quot;es6新特性&quot;&gt;ES6新特性&lt;/h1&gt;
+
+&lt;h2 id=&quot;模板字面量&quot;&gt;模板字面量&lt;/h2&gt;
+&lt;p&gt;模板字面量用倒引号 ( `` )做字符串的拼接&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;let message = `${student.name} please see ${teacher.name} in ${teacher.room} to pick up your report card.`;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;解构&quot;&gt;解构&lt;/h2&gt;
+&lt;p&gt;解构数组的值:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const point = [10, 25, -34];
+const [x, y, z] = point;
+console.log(x, y, z);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;解构对象中的值&quot;&gt;解构对象中的值:&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const gemstone = {
+  type: 'quartz',
+  color: 'rose',
+  karat: 21.29
+};
+const {type, color, karat} = gemstone;
+console.log(type, color, karat);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;es6中函数不需要关键字function&quot;&gt;es6中函数不需要关键字function&lt;/h2&gt;
+&lt;h2 id=&quot;forof循环&quot;&gt;for..of循环&lt;/h2&gt;
+&lt;p&gt;for…of 循环用于循环访问任何可迭代的数据类型。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+for (const digit of digits) {
+  console.log(digit);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;可以随时停止或退出 for…of 循环&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for (const digit of digits) {
+  if (digit % 2 === 0) {
+    continue;
+  }
+  console.log(digit);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;展开运算符&quot;&gt;展开运算符&lt;/h2&gt;
+&lt;p&gt;用三个连续的点 (…) 表示,
+使你能够将字面量对象展开为多个元素&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const books = [&quot;Don Quixote&quot;, &quot;The Hobbit&quot;, &quot;Alice in Wonderland&quot;, &quot;Tale of Two Cities&quot;];
+console.log(...books);
+Prints: Don Quixote The Hobbit Alice in Wonderland Tale of Two Cities
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;concat展开多个数组拼接&quot;&gt;concat()展开多个数组(拼接)&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const fruits = [&quot;apples&quot;, &quot;bananas&quot;, &quot;pears&quot;];
+const vegetables = [&quot;corn&quot;, &quot;potatoes&quot;, &quot;carrots&quot;];
+const produce = fruits.concat(vegetables);
+console.log(produce);
+Prints: [&quot;apples&quot;, &quot;bananas&quot;, &quot;pears&quot;, &quot;corn&quot;, &quot;potatoes&quot;, &quot;carrots&quot;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;使用展开符来结合数组拼接&quot;&gt;使用展开符来结合数组(拼接)&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const fruits = [&quot;apples&quot;, &quot;bananas&quot;, &quot;pears&quot;];
+const vegetables = [&quot;corn&quot;, &quot;potatoes&quot;, &quot;carrots&quot;];
+const produce = [...fruits,...vegetables];
+console.log(produce);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;剩余参数可变参数&quot;&gt;剩余参数(可变参数)&lt;/h2&gt;
+&lt;p&gt;使用剩余参数可以将多个元素绑定到一个数组中,( … ) 表示&lt;/p&gt;
+
+&lt;p&gt;用途1: 将变量赋数组值时:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; const order = [20.17, 18.67, 1.50, &quot;cheese&quot;, &quot;eggs&quot;, &quot;milk&quot;, &quot;bread&quot;];
+ const [total, subtotal, tax, ...items] = order;
+ console.log(total, subtotal, tax, items);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;用途2: 可变参数函数&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; function sum(...nums) {
+  let total = 0;
+  for(const num of nums) {
+    total += num;
+  }
+  return total;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;## 箭头函数
+ ES6之前,使用普通函数把其中每个名字转换为大写形式：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; const upperizedNames = ['Farrin', 'Kagure', 'Asser'].map(function(name) {
+  return name.toUpperCase();
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;箭头函数表示:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; const upperizedNames = ['Farrin', 'Kagure', 'Asser'].map(
+   name =&amp;gt; name.toUpperCase()
+ );
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; // 空参数列表需要括号
+const sayHi = () =&amp;gt; console.log('Hello Udacity Student!');
+
+// 多个参数需要括号
+const orderIceCream = (flavor, cone) =&amp;gt; console.log(`Here's your ${flavor} ice cream in a ${cone} cone.`);
+orderIceCream('chocolate', 'waffle');
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如果箭头函数的主体内需要多行代码, 则需要使用常规主体语法:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;它将函数主体放在花括号内&lt;/li&gt;
+  &lt;li&gt;需要使用 return 语句来返回内容。
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const upperizedNames = ['Farrin', 'Kagure', 'Asser'].map( name =&amp;gt; {
+  name = name.toUpperCase();
+  return `${name} has ${name.length} characters in their name`;
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;this&quot;&gt;this&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 构造函数
+function IceCream() {
+  this.scoops = 0;
+}
+
+// 为 IceCream 添加 addScoop 方法
+IceCream.prototype.addScoop = function() {
+  const cone = this; // 设置 `this` 给 `cone`变量
+  setTimeout(function() {
+    cone.scoops++; // 引用`cone`变量
+    console.log('scoop added!');
+    console.log(dessert.scoops);//1
+  }, 0.5);
+};
+
+const dessert = new IceCream();
+dessert.addScoop();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;默认参数函数&quot;&gt;默认参数函数&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function greet(name = 'Student', greeting = 'Welcome') {
+  return `${greeting} ${name}!`;
+}
+
+greet(); // Welcome Student!
+greet('James'); // Welcome James!
+greet('Richard', 'Howdy'); // Howdy Richard!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;默认值与解构&quot;&gt;默认值与解构&lt;/h2&gt;
+&lt;p&gt;1.默认值与解构数组&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function createGrid([width = 5, height = 5] = []) {
+  return `Generating a grid of ${width} by ${height}`;
+}
+createGrid(); // Generates a 5 x 5 grid
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;2.数组是基于位置的，我们需要传入 undefined 以跳过第一个参数（并使用默认值）来到达第二个参数&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;createSundae([undefined, ['Hot Fudge', 'Sprinkles', 'Caramel']]);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;javascript类&quot;&gt;javascript类&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Plane {
+//初始化
+  constructor(numEngines) {
+    this.numEngines = numEngines;
+    this.enginesActive = false;
+  }
+
+  //静态方法
+  static badWeather(planes) {
+    for (plane of planes) {
+      plane.enginesActive = false;
+    }
+  }
+
+  // //原型上的方法, 由所有实例对象共享.
+  startEngines() {
+    console.log('starting engines…');
+    this.enginesActive = true;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Wed, 04 Sep 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/09/ES6%E6%96%B0%E7%89%B9%E6%80%A7/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/09/ES6%E6%96%B0%E7%89%B9%E6%80%A7/</guid>
+        
+        <category>HTML</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>搭建React应用</title>
+        <description>&lt;h2 id=&quot;搭建一个简易的-npm-项目&quot;&gt;搭建一个简易的 npm 项目&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;使用 mkdir &amp;lt; 文件夹名 &amp;gt; 创建一个新的文件夹
+ -通过 cd &amp;lt; 文件夹名 &amp;gt; 进入该文件夹
+ -运行 npm init -y 或者 npm init 来初始化一个 npm 项目
+ -安装一个本地包,比如 React: npm install react&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;零配置搭建react-应用&quot;&gt;零配置搭建React 应用&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install react react-dom //安装React
+sudo npm install -g create-react-app
+create-react-app --version
+sudo create-react-app myreact
+cd myreact
+
+// 在 http://localhost:3000 启动应用
+npm start
+// 运行所有测试
+npm test
+// 构建项目的产品文件
+npm run build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;升级node和npm版本&quot;&gt;升级node和npm版本&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo npm install -g n
+sudo n 8.0.0
+ node -v
+
+  sudo npm install npm@latest -g
+  npm -v
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;给予权限解锁只读&quot;&gt;给予权限解锁只读&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo chown -R xiao  .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;引入jquery&quot;&gt;引入jquery&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm i jquery -S
+import $ from  'jquery'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Tue, 03 Sep 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/09/%E6%90%AD%E5%BB%BAReact-%E5%BA%94%E7%94%A8/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/09/%E6%90%AD%E5%BB%BAReact-%E5%BA%94%E7%94%A8/</guid>
+        
+        <category>HTML</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>优秀的设计</title>
+        <description>&lt;h1 id=&quot;优秀的设计&quot;&gt;优秀的设计&lt;/h1&gt;
+
+&lt;h2 id=&quot;4大基本原则&quot;&gt;4大基本原则&lt;/h2&gt;
+
+&lt;p&gt;对比：要避免页面上的元素太过相似。如果元素不相同,那就干脆让它们截然不同，要让页面引人注目。&lt;/p&gt;
+
+&lt;p&gt;重复：让设计中的视觉要素在整个作品中重复出现，既能增加条理性,还可以加强统一性。&lt;/p&gt;
+
+&lt;p&gt;对齐：每个元素都应当与页面上的另一个元素有某种视觉联系，这样能建立一种清晰、精巧而且清爽的外观。&lt;/p&gt;
+
+&lt;p&gt;亲密性：彼此相关的项应当靠近,归组在一起，这有助于组织信息,减少混乱,为读者提供清晰的结构。&lt;/p&gt;
+
+&lt;p&gt;Robin 亲密性原则:将相关的项组织在一起，物理位置的接近就意味着存在关联。&lt;/p&gt;
+
+&lt;p&gt;Robin 对齐原则:任何元素都不能在页面上随意安放，每一项都应当与页面上的某个内容存在某种视觉联系。&lt;/p&gt;
+
+&lt;p&gt;Robin 重复原则:设计的某些方面需要在整个作品中重复。&lt;/p&gt;
+
+&lt;p&gt;Robin 对比原则:页面上的不同元素之间要有对比效果,达到吸引读者的对比效果。&lt;/p&gt;
+</description>
+        <pubDate>Sat, 24 Aug 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/08/%E4%BC%98%E7%A7%80%E7%9A%84%E8%AE%BE%E8%AE%A1/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/%E4%BC%98%E7%A7%80%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid>
+        
+        <category>工具</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>markdown基本语法</title>
+        <description>&lt;h1 id=&quot;markdown基本语法&quot;&gt;markdown基本语法&lt;/h1&gt;
+
+&lt;h2 id=&quot;一标题&quot;&gt;一、标题&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#一级标题
+##二级标题
+###三级标题
+####四级标题
+#####五级标题
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;二字体&quot;&gt;二、字体&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;加粗 &lt;code class=&quot;highlighter-rouge&quot;&gt;**这是加粗的字体**&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;斜体 &lt;code class=&quot;highlighter-rouge&quot;&gt;*这是倾斜的字体*&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;斜体加粗 &lt;code class=&quot;highlighter-rouge&quot;&gt;***这是倾斜加粗的字体***&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;删除线&lt;code class=&quot;highlighter-rouge&quot;&gt;~~这是加删除线的字体~~&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;三引用&quot;&gt;三、引用&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;这是引用的内容
+&amp;gt;&amp;gt;这是引用的内容
+&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;这是引用的内容
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;这是引用的内容&lt;/p&gt;
+
+  &lt;blockquote&gt;
+    &lt;p&gt;这是引用的内容&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;四分割线&quot;&gt;四、分割线&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;三个或三个以上的 - 或者 *
+
+------
+******
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;五图片&quot;&gt;五、图片&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;！[图片alt](图片地址 &quot;title&quot;)			title可加可不加
+
+例：
+![blockchain](https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/
+u=702257389,1274025419&amp;amp;fm=27&amp;amp;gp=0.jpg &quot;区块链&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/
+u=702257389,1274025419&amp;amp;fm=27&amp;amp;gp=0.jpg&quot; alt=&quot;blockchain&quot; title=&quot;区块链&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;六超链接&quot;&gt;六、超链接&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[超链接名](地址 &quot;title&quot;)			title可加可不加
+
+例:
+[百度](http://baidu.com)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://baidu.com&quot;&gt;百度&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;七列表&quot;&gt;七、列表&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;无序列表	&lt;code class=&quot;highlighter-rouge&quot;&gt;-   +   * 跟内容之间都要有一个空格&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;有序列表	&lt;code class=&quot;highlighter-rouge&quot;&gt;数字加点带空格&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;列表嵌套   &lt;code class=&quot;highlighter-rouge&quot;&gt;上一级和下一级之间敲三个空格即可&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;八表格&quot;&gt;八、表格&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;表头|表头|表头
+-|:-:|-:
+内容|内容|内容
+内容|内容|内容
+
+-两边加冒号 -&amp;gt; 文字居中
+-右边加冒号 -&amp;gt; 文字居右
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;name&lt;/td&gt;
+      &lt;td&gt;age&lt;/td&gt;
+      &lt;td&gt;sex&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;|-|-&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;xiao&lt;/td&gt;
+      &lt;td&gt;23&lt;/td&gt;
+      &lt;td&gt;man&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ying&lt;/td&gt;
+      &lt;td&gt;24&lt;/td&gt;
+      &lt;td&gt;woman&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;九代码&quot;&gt;九、代码&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;`代码内容`
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;​```
+	code...
+	code...
+​```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Sat, 24 Aug 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/08/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</guid>
+        
+        <category>工具</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>linux常用指令</title>
+        <description>&lt;h1 id=&quot;linux常用指令&quot;&gt;linux常用指令&lt;/h1&gt;
+
+&lt;p&gt;sudo 表示用管理员权限&lt;/p&gt;
+
+&lt;p&gt;更新得到最新资源地址：&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get update&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;下载安装vim编译器：&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get install vim &lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;检查编译器：&lt;code class=&quot;highlighter-rouge&quot;&gt;cc -v&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;用户目录：&lt;code class=&quot;highlighter-rouge&quot;&gt;cd ~&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;查看当前路径：&lt;code class=&quot;highlighter-rouge&quot;&gt;pwd&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;查看当前路径下的文件：&lt;code class=&quot;highlighter-rouge&quot;&gt;ls&lt;/code&gt; 或   &lt;code class=&quot;highlighter-rouge&quot;&gt;ll&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;新建文件：&lt;code class=&quot;highlighter-rouge&quot;&gt;touch file&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;删除文件： &lt;code class=&quot;highlighter-rouge&quot;&gt;rm file&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;新建文件夹： &lt;code class=&quot;highlighter-rouge&quot;&gt;mkdir dir&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;删除文件夹： &lt;code class=&quot;highlighter-rouge&quot;&gt;rm -rf dir&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;新建并编辑文件: &lt;code class=&quot;highlighter-rouge&quot;&gt;vi file&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;vi-常用指令&quot;&gt;vi 常用指令&lt;/h2&gt;
+
+&lt;p&gt;保存：&lt;code class=&quot;highlighter-rouge&quot;&gt;:w&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;退出：&lt;code class=&quot;highlighter-rouge&quot;&gt;:q&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;保存并退出：&lt;code class=&quot;highlighter-rouge&quot;&gt;:wq&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;不保存退出：&lt;code class=&quot;highlighter-rouge&quot;&gt;q!&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;删除当前光标的字符：&lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;剪切整行：&lt;code class=&quot;highlighter-rouge&quot;&gt;dd&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;复制：&lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;复制一行：&lt;code class=&quot;highlighter-rouge&quot;&gt;yy&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;复制N行：&lt;code class=&quot;highlighter-rouge&quot;&gt;Nyy&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;复制N行：&lt;code class=&quot;highlighter-rouge&quot;&gt;Ncp&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;插入模式：&lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;撤销：&lt;code class=&quot;highlighter-rouge&quot;&gt;u&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;添加行号：&lt;code class=&quot;highlighter-rouge&quot;&gt;:set nu&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;打开一个新文件：&lt;code class=&quot;highlighter-rouge&quot;&gt;:sp &amp;lt;file&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;上移一层：&lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl+f&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;下移一层：&lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl+b&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;移动到文件首行：&lt;code class=&quot;highlighter-rouge&quot;&gt;gg&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;命令行模式下新建文件：&lt;code class=&quot;highlighter-rouge&quot;&gt;:sp max.c&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;光标移至下界面：&lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl + w + 👇&lt;/code&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 24 Aug 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/08/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</guid>
+        
+        <category>工具</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>git加速</title>
+        <description>&lt;h1 id=&quot;git加速&quot;&gt;git加速&lt;/h1&gt;
+
+&lt;p&gt;ubuntu :&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd ~
+
+ su
+
+cd /etc/ 
+
+vi hosts
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;github.com  192.30.253.112
+
+assets-cdn.github.com 185.199.108.153
+
+github.global.ssl.fastly.net 151.101.185.194
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;刷新dns：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo /etc/init.d/networking restart &lt;/code&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 22 Aug 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/08/git%E5%8A%A0%E9%80%9F/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/git%E5%8A%A0%E9%80%9F/</guid>
+        
+        <category>工具</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>内存管理与函数指针</title>
+        <description>&lt;h1 id=&quot;内存管理与函数指针&quot;&gt;内存管理与函数指针&lt;/h1&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;系统内核
+
+栈	(局部变量)(先进后出，后进先出，越往后地址越小。)
+
+堆
+
+数据段	(全局变量、常量、静态变量)
+
+代码段	(越往后地址越大)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;函数调用及操作记录在栈里&lt;/p&gt;
+
+&lt;p&gt;编译后的代码被保存在代码段&lt;/p&gt;
+
+&lt;p&gt;变量的本质是内存&lt;/p&gt;
+
+&lt;p&gt;指针的本质是地址&lt;/p&gt;
+
+&lt;p&gt;p &amp;amp;a	-&amp;gt;	找到内存地址 (a是变量)&lt;/p&gt;
+
+&lt;p&gt;p func	-&amp;gt;	打印func地址本身 (func是地址)&lt;/p&gt;
+
+&lt;p&gt;p *func	-&amp;gt;	通过地址func，取func里面的值(func是地址)&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 19 Aug 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/08/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/</guid>
+        
+        <category>C语言</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>第一个C语言程序</title>
+        <description>&lt;h1 id=&quot;第一个c语言程序&quot;&gt;第一个C语言程序&lt;/h1&gt;
+
+&lt;p&gt;新建一个c文件：&lt;code class=&quot;highlighter-rouge&quot;&gt;vi a.c&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;
+
+int main()
+{
+	printf(&quot;hello world!\n&quot;);
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;编译c语言程序：&lt;code class=&quot;highlighter-rouge&quot;&gt;cc a.c&lt;/code&gt;	-&amp;gt;	生成 &lt;code class=&quot;highlighter-rouge&quot;&gt;a.out&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;执行c语言程序：&lt;code class=&quot;highlighter-rouge&quot;&gt;./a.out&lt;/code&gt;	-&amp;gt;	&lt;code class=&quot;highlighter-rouge&quot;&gt;hello world!&lt;/code&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 19 Aug 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/08/Linux%E4%B8%8B%E7%AC%AC%E4%B8%80%E4%B8%AAC%E7%A8%8B%E5%BA%8F/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/Linux%E4%B8%8B%E7%AC%AC%E4%B8%80%E4%B8%AAC%E7%A8%8B%E5%BA%8F/</guid>
+        
+        <category>C语言</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>jquery-Ajax</title>
+        <description>&lt;h1 id=&quot;jquery-ajax&quot;&gt;jquery-Ajax&lt;/h1&gt;
+
+&lt;h3 id=&quot;load-url-class&quot;&gt;load (url class)&lt;/h3&gt;
+
+&lt;p&gt;局部方法，适合做静态文件的异步获取&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;例：
+
+//把test.txt中ｃｌａｓｓ为url 的内容加载到id为box的标签中
+$(&quot;#box&quot;).load(&quot;test.txt .url&quot;)
+
+//get方式提交
+$(&quot;#box&quot;).load(&quot;test.php?url=ycku&quot;);
+
+//post方式提交
+$(&quot;#box&quot;).load(&quot;test.php&quot;,{
+	ur:'ycku'
+});
+
+//回调函数
+$(&quot;#box&quot;).load(&quot;test.php&quot;,{ur:'ycku'},function(response,status,xhr){
+	//alert(response);
+	//$(&quot;#box&quot;).html(response+&quot;123&quot;);
+	//if(status==&quot;success&quot;){alert(&quot;成功处理&quot;)}
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;getfiledatafunctype&quot;&gt;get(file,data,func,type)&lt;/h3&gt;
+
+&lt;p&gt;file -&amp;gt; 文件　data -&amp;gt; 数据　func -&amp;gt; 方法　type -&amp;gt; 强行转为某格式&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//问号传参
+$(&quot;input&quot;).click(function(){
+	$.get(&quot;test.php?url=ycku&quot;,function(response,status,xhr){
+		$(&quot;#box&quot;).html(response);
+	})
+});
+
+//data传参
+$(&quot;input&quot;).click(function(){
+	$.get(&quot;test.php&quot;,&quot;url=ycku&quot;,function(response,status,xhr){
+		$(&quot;#box&quot;).html(response);
+	})
+});
+
+//键值对传参
+$(&quot;input&quot;).click(function(){
+	$.get(&quot;test.php&quot;,{
+		url:&quot;ycku&quot;
+	},function(response,status,xhr){
+		$(&quot;#box&quot;).html(response);
+	})
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;postfiledatafunctype&quot;&gt;post(file,data,func,type)&lt;/h3&gt;
+
+&lt;p&gt;file -&amp;gt; 文件　data -&amp;gt; 数据　func -&amp;gt; 方法　type -&amp;gt; 强行转为某格式&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//data传参
+$(&quot;input&quot;).click(function(){
+	$.get(&quot;test.php&quot;,&quot;url=ycku&quot;,function(response,status,xhr){
+		$(&quot;#box&quot;).html(response);
+	})
+});
+
+//键值对传参
+$(&quot;input&quot;).click(function(){
+	$.post(&quot;test.php&quot;,{
+		url:&quot;ycku&quot;
+	},function(response,status,xhr){
+		$(&quot;#box&quot;).html(response);
+	})
+});
+
+//错误处理
+$.post(&quot;user.php&quot;).error:function(xhr,errorText,errorType){
+			alert(xhr.status+&quot;:&quot;+xhr.statusText);
+		}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;getjsonfilefunc&quot;&gt;getJSON(file,func)&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$(&quot;input&quot;).click(function(){
+	$.getJSON(&quot;test.json&quot;,function(response,status,xhr){
+		alert(response[0].url);
+	})
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;getscript&quot;&gt;getScript()&lt;/h3&gt;
+
+&lt;p&gt;js文件被呼唤时才被加载，节省性能，且不需要引入该js文件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$(&quot;input&quot;).click(function(){
+	$.getScript(&quot;test.js&quot;);
+	})
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;ajax&quot;&gt;ajax()&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$(&quot;input&quot;).click(function(){
+	$.ajax({
+		type:&quot;post&quot;,
+		url:&quot;text.php&quot;,
+		data:{word:&quot;xiao&quot;},
+		success:function(response,status,xhr){
+			$(&quot;#box&quot;).html(response);
+		},
+		timeout:3000,
+		global:false,
+		error:function(xhr,errorText,errorType){
+			alert(xhr.status+&quot;:&quot;+xhr.statusText);
+		}
+	});
+});
+
+//序列化表单
+$(&quot;form input[type=button]&quot;).click(function(){
+	$.ajax({
+		type:&quot;post&quot;,
+		url:&quot;text.php&quot;,
+		data:$(&quot;form&quot;).serialize(),
+		//var json = $(this).serializeArray();	获取json形式
+		success:function(response,status,xhr){
+			$(&quot;#box&quot;).html(response);
+		}
+	});
+});
+
+//初始化重复属性
+	$.ajaxSetup({
+		type:&quot;post&quot;,
+		url:&quot;text.php&quot;,
+		data:$(&quot;form&quot;).serialize()
+	});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;ajaxstart--ajaxstop&quot;&gt;ajaxStart()	/	ajaxStop()&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//请求加载提示的显示和隐藏
+$(&quot;,loading&quot;).ajaxStart(function(){
+	$(this).show();
+}).ajaxStop(function(){
+	$(this).hide();
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;ajaxsend-请求之前执行&quot;&gt;ajaxSend() 请求之前执行&lt;/h3&gt;
+
+&lt;h3 id=&quot;ajaxcomplete-请求完成后无论是否成功执行&quot;&gt;ajaxComplete() 请求完成后，无论是否成功执行&lt;/h3&gt;
+
+&lt;h3 id=&quot;ajaxsuccess-请求成功后执行&quot;&gt;ajaxSuccess() 请求成功后执行&lt;/h3&gt;
+
+&lt;h3 id=&quot;ajaxerror-请求失败后执行&quot;&gt;ajaxError() 请求失败后执行&lt;/h3&gt;
+
+&lt;h1 id=&quot;原生ajax&quot;&gt;原生Ajax&lt;/h1&gt;
+
+&lt;h2 id=&quot;xhr请求&quot;&gt;XHR请求&lt;/h2&gt;
+
+&lt;h3 id=&quot;openmethodurlasync&quot;&gt;open(&lt;em&gt;method&lt;/em&gt;,&lt;em&gt;url&lt;/em&gt;,&lt;em&gt;async&lt;/em&gt;)&lt;/h3&gt;
+
+&lt;p&gt;规定请求的类型、URL 以及是否异步处理请求。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;method&lt;/em&gt;：请求的类型；GET 或 POST&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;url&lt;/em&gt;：文件在服务器上的位置&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;async&lt;/em&gt;：true（异步）或 false（同步）&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;xmlhttp.open(&quot;GET&quot;,&quot;ajax_test.html&quot;,true);&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;sendstring&quot;&gt;send(&lt;em&gt;string&lt;/em&gt;)&lt;/h3&gt;
+
+&lt;p&gt;将请求发送到服务器。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;string&lt;/em&gt;：仅用于 POST 请求&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;setrequestheaderheadervalue&quot;&gt;setRequestHeader(&lt;em&gt;header,value&lt;/em&gt;)&lt;/h3&gt;
+
+&lt;p&gt;向请求添加 HTTP 头。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;header&lt;/em&gt;: 规定头的名称&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;value&lt;/em&gt;: 规定头的值&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;xhr响应&quot;&gt;XHR响应&lt;/h2&gt;
+
+&lt;p&gt;responseText	//获得字符串形式的响应数据。&lt;/p&gt;
+
+&lt;p&gt;responseXML	//获得 XML 形式的响应数据。&lt;/p&gt;
+
+&lt;h2 id=&quot;onreadystatechange事件&quot;&gt;onreadystatechange事件&lt;/h2&gt;
+
+&lt;p&gt;onreadystatechange	//每当 readyState 属性改变时，就会调用该函数。&lt;/p&gt;
+
+&lt;p&gt;readyState	//存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;0: 请求未初始化&lt;/li&gt;
+  &lt;li&gt;1: 服务器连接已建立&lt;/li&gt;
+  &lt;li&gt;2: 请求已接收&lt;/li&gt;
+  &lt;li&gt;3: 请求处理中&lt;/li&gt;
+  &lt;li&gt;4: 请求已完成，且响应已就绪&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;status	//200: “OK”，404: 未找到页面&lt;/p&gt;
+</description>
+        <pubDate>Fri, 09 Aug 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/08/Ajax/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/Ajax/</guid>
+        
+        <category>HTML</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

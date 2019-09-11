@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>JQuery-事件</title>
+  <meta name="description" content="鼠标事件">
+  <meta name="author" content="leopardpan">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="JQuery-事件">
+  <meta name="twitter:description" content="鼠标事件">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="JQuery-事件">
+  <meta property="og:description" content="鼠标事件">
+  
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2019/08/jQuery-%E4%BA%8B%E4%BB%B6/">
+  <link rel="alternate" type="application/rss+xml" title="潇授" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+
+<!-- 站点统计 -->
+  <script 
+  async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>  
+
+<!-- 百度统计 -->
+  
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?xxxx";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+  
+
+<!-- google 统计 -->
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'xxxx', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9005224472374751",
+    enable_page_level_ads: true
+  });
+</script>
+
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">        
+      <div class="nav_container">
+         <nav class="nav-menu-item" style = "float:right">
+            <i class="nav-menu-item">
+              <a href="/#blog" title="" class="blog-button">  博客主页
+              </a>
+            </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/archive" title="archive" class="btn-mobile-menu__icon">
+                      所有文章
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/tags" title="tags" class="btn-mobile-menu__icon">
+                      标签
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/about" title="about" class="btn-mobile-menu__icon">
+                      关于我
+                  </a>
+                </i>
+            
+          </nav>
+      </div>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <!-- 头像效果-start -->
+        <div class="ih-item circle effect right_to_left">            
+            <a href="/#blog" title="前往 潇授 的主页" class="blog-button">
+                <div class="img"><img src="/images/avatar.jpg" alt="img"></div>
+                <div class="info">
+                    <div class="info-back">
+                        <h2> 
+                            
+                                xiao
+                            
+                        </h2>
+                        <p>
+                           
+                                python / 大数据
+                            
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- 头像效果-end -->
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 潇授" class="blog-button">潇授</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">个人站</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">欢迎来到我的个人站~</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">博客主页</a></li>
+                
+                  <li class="navigation__item"><a href="/archive" title="archive">所有文章</a></li>
+                
+                  <li class="navigation__item"><a href="/tags" title="tags">标签</a></li>
+                
+                  <li class="navigation__item"><a href="/about" title="about">关于我</a></li>
+                
+              </ul>
+            </nav>
+          </div>          
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-clear"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">JQuery-事件</h1>
+    <div class="post-meta">
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2019-08-07 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2019-08-07</time>  
+         
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
+    </div>
+  </header>
+
+  <section class="post">
+    <h2 id="鼠标事件">鼠标事件</h2>
+
+<p>click: 鼠标单击时触发；</p>
+
+<p>dblclick：鼠标双击时触发；</p>
+
+<p>mouseenter：鼠标进入时触发；</p>
+
+<p>mouseleave：鼠标移出时触发；</p>
+
+<p>mousemove：鼠标在DOM内部移动时触发；</p>
+
+<p>hover：鼠标进入和退出时触发两个函数，相当于mouseenter加上mouseleave。</p>
+
+<h2 id="键盘事件">键盘事件</h2>
+
+<p>keydown：键盘按下时触发；</p>
+
+<p>keyup：键盘松开时触发；</p>
+
+<p>keypress：按一次键后触发。</p>
+
+<h2 id="其他事件">其他事件</h2>
+
+<p>focus：当DOM获得焦点时触发；</p>
+
+<p>blur：当DOM失去焦点时触发；</p>
+
+<p>change：当<code class="highlighter-rouge">&lt;input&gt;</code>、<code class="highlighter-rouge">&lt;select&gt;</code>或<code class="highlighter-rouge">&lt;textarea&gt;</code>的内容改变时触发；</p>
+
+<p>submit：当<code class="highlighter-rouge">&lt;form&gt;</code>提交时触发；</p>
+
+<p>ready：当页面被载入并且DOM树完成初始化后触发。</p>
+
+<p>初始化代码必须放到<code class="highlighter-rouge">document</code>对象的<code class="highlighter-rouge">ready</code>事件中，保证DOM已完成初始化：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$(document).on("ready", function () {
+    $('#submit').on("submit", function () {
+        alert("submit");
+    });
+});
+
+$(document).ready(function () {
+    $("#submit").submit(function () {
+        alert("xiao")
+    })
+});
+
+$(function () {
+    $("#submit").submit(function () {
+        alert("ready")
+    })
+});
+</code></pre></div></div>
+
+<h2 id="取消绑定">取消绑定</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function hello() {
+    alert('hello!');
+}
+a.click(hello); // 绑定事件
+
+// 10秒钟后解除绑定:
+setTimeout(function () {
+    a.off('click', hello);
+}, 10000);
+</code></pre></div></div>
+
+<h2 id="事件触发条件">事件触发条件</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var input = $('#test-input');
+input.val('change it!');
+input.change(); // 触发change事件
+</code></pre></div></div>
+
+<h2 id="readyfn">ready(fn)</h2>
+
+<p>要在DOM就绪时执行的函数</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$(document).ready(function(){
+  // 在这里写你的代码...
+});
+
+或
+
+$(function($) {
+  // 你可以在这里继续使用$作为别名...
+});
+</code></pre></div></div>
+
+<h2 id="oneventsselectordatafn">on(events,[selector],[data],fn)</h2>
+
+<p>在选择元素上绑定一个或多个事件的事件处理函数。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//点击p标签弹框ｐ中的内容
+$("p").on("click", function(){
+alert( $(this).text() );
+});
+
+//传入数据和函数
+function myHandler(event) {
+alert(event.data.foo);}
+$("p").on("click", {foo: "bar"}, myHandler)
+
+//取消表单提交操作，并通过返回false来阻止事件：
+$("form").on("submit", false)
+
+//取消事件的默认动作。
+$("form").on("submit", function(event) {
+  event.preventDefault();
+});
+
+//停止事件的传播，阻止它被分派到其他 Document 节点
+$("form").on("submit", function(event) {
+  event.stopPropagation();
+});
+</code></pre></div></div>
+
+<h2 id="offeventsselectorfn">off(events,[selector],[fn])</h2>
+
+<p>在选择元素上移除一个或多个事件的事件处理函数。</p>
+
+<p>//</p>
+
+<h2 id="onetypedatafn">one(type,[data],fn)</h2>
+
+<p>为每一个匹配元素的特定事件（像click）绑定一个一次性的事件处理函数。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//当所有段落被第一次点击的时候，显示所有其文本
+$("p").one("click", function(){
+  alert( $(this).text() );
+});
+</code></pre></div></div>
+
+<h2 id="triggertypedata">trigger(type,[data])</h2>
+
+<p>在每一个匹配的元素上触发某类事件。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//提交第一个表单，但不用submit()
+$("form:first").trigger("submit")
+
+//给一个事件传递参数
+$("p").click( function (event, a, b) {
+  // 一个普通的点击事件时，a和b是undefined类型
+  // 如果用下面的语句触发，那么a指向"foo",而b指向"bar"
+} ).trigger("click", ["foo", "bar"]);
+</code></pre></div></div>
+
+<h2 id="triggerhandlertype-data">triggerHandler(type, <em>[data]</em>)</h2>
+
+<p>这个特别的方法将会触发指定的事件类型上所有绑定的处理函数。但不会执行浏览器默认动作，也不会产生事件冒泡。</p>
+
+<p>这个方法的行为表现与trigger类似，但有以下三个主要区别：</p>
+
+<p>* 第一，他不会触发浏览器默认事件。</p>
+
+<p>* 第二，只触发jQuery对象集合中第一个元素的事件处理函数。</p>
+
+<p>* 第三，这个方法的返回的是事件处理函数的返回值，而不是据有可链性的jQuery对象。此外，如果最开始的jQuery对象集合为空，则这个方法返回 undefined 。</p>
+
+<h2 id="hoveroverout">hover([over,]out)</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//over,out 描述:	鼠标悬停的表格加上特定的类
+$("td").hover(
+  function () {
+    $(this).addClass("hover");
+  },
+  function () {
+    $(this).removeClass("hover");
+  }
+);
+</code></pre></div></div>
+
+<h2 id="togglespeedeasingfn">toggle([speed],[easing],[fn])</h2>
+
+<p>用于绑定两个或多个事件处理器函数，以响应被选元素的轮流的 click 事件。</p>
+
+<p>如果元素是可见的，切换为隐藏的；如果元素是隐藏的，切换为可见的。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//对表格切换显示/隐藏
+$('td).toggle();
+
+//用600毫秒的时间将段落缓慢的切换显示状态
+$("p").toggle("slow");
+
+//用200毫秒将段落迅速切换显示状态，之后弹出一个对话框。
+$("p").toggle("fast",function(){
+   alert("Animation Done.");
+ });
+ 
+ //如果这个参数为true ，那么匹配的元素将显示;如果false ，元素是隐藏的
+ $('#foo').toggle(showOrHide);
+
+//相当于
+if (showOrHide) {
+  $('#foo').show();
+} else {
+  $('#foo').hide();
+}      
+</code></pre></div></div>
+
+<h2 id="blurdatafn">blur([[data],fn])</h2>
+
+<p>当元素失去焦点时触发 blur 事件。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//触发所有段落的blur事件
+$("p").blur();
+
+//任何段落失去焦点时弹出一个 "Hello World!"在每一个匹配元素的blur事件中绑定的处理函数。
+$("p").blur( function () { alert("Hello World!"); } );
+</code></pre></div></div>
+
+<h2 id="changedatafn">change([[data],fn])</h2>
+
+<p>当元素的值发生改变时，会发生 change 事件。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//给所有的文本框增加输入验证
+$("input[type='text']").change( function() {
+  // 这里可以写些验证代码
+});
+</code></pre></div></div>
+
+<h2 id="clickdatafn">click([[data],fn])</h2>
+
+<p>触发每一个匹配元素的click事件。</p>
+
+<p>这个函数会调用执行绑定到click事件的所有函数。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//将页面内所有段落点击后隐藏。
+$("p").click( function () { $(this).hide(); });
+</code></pre></div></div>
+
+<h2 id="dblclickdatafn">dblclick([[data],fn])</h2>
+
+<p>当双击元素时，会发生 dblclick 事件。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//给页面上每个段落的双击事件绑上 "Hello World!" 警告框
+$("p").dblclick( function () { alert("Hello World!"); });
+</code></pre></div></div>
+
+<h2 id="focusdatafn">focus([[data],fn])</h2>
+
+<p>当元素获得焦点时，触发 focus 事件。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//当页面加载后将 id 为 'login' 的元素设置焦点:
+$(document).ready(function(){
+  $("#login").focus();
+});
+
+//无法使用文本框
+$("input[type=text]").focus(function(){
+  this.blur();
+});
+</code></pre></div></div>
+
+<h2 id="focusindatafn">focusin([data],fn)</h2>
+
+<p>当元素获得焦点时，触发 focusin 事件。(可以在父元素上检测子元素获取焦点的情况)</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//获得焦点后会触发动画
+$("p").focusin(function() {
+  $(this).find("span").css('display','inline').fadeOut(1000);
+});
+</code></pre></div></div>
+
+<h2 id="focusoutdatafn">focusout([data],fn)</h2>
+
+<p>当元素失去焦点时触发 focusout 事件。(可以在父元素上检测子元素获取焦点的情况)</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//失去焦点后会触发动画
+$("p").focusout(function() {
+  $(this).find("span").css('display','inline').fadeOut(1000);
+});
+</code></pre></div></div>
+
+<h2 id="keydowndatafn">keydown([[data],fn])</h2>
+
+<p>当键盘或按钮被按下时，发生 keydown 事件。</p>
+
+<h2 id="keypressdatafn">keypress([[data],fn])</h2>
+
+<p>当键盘或按钮被按下时，发生 keypress 事件。(每插入一个字符，就会发生 keypress 事件)</p>
+
+<h2 id="keyupdatafn">keyup([[data],fn])</h2>
+
+<p>当按钮被松开时，发生 keyup 事件。它发生在当前获得焦点的元素上。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//当按下按键时，改变文本域的颜色：
+$("input").keyup(function(){
+  $("input").css("background-color","#D6D6FF");
+});
+</code></pre></div></div>
+
+<h2 id="mousedowndatafn">mousedown([[data],fn])</h2>
+
+<p>当鼠标指针移动到元素上方，并按下鼠标按键时，会发生 mousedown 事件。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//当按下鼠标按钮时，隐藏或显示元素：
+$("button").mousedown(function(){
+  $("p").slideToggle();
+});
+</code></pre></div></div>
+
+<h2 id="mouseenterdatafn">mouseenter([[data],fn])</h2>
+
+<p>当鼠标指针穿过元素时，会发生 mouseenter 事件。该事件大多数时候会与mouseleave 事件一起使用。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//当鼠标指针进入（穿过）元素时，改变元素的背景色
+$("p").mouseenter(function(){
+  $("p").css("background-color","yellow");
+});
+</code></pre></div></div>
+
+<h2 id="mouseleavedatafn">mouseleave([[data],fn])</h2>
+
+<p>当鼠标指针离开元素时，会发生 mouseleave 事件。该事件大多数时候会与mouseenter 事件一起使用。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//当鼠标指针离开元素时，改变元素的背景色
+$("p").mouseleave(function(){
+  $("p").css("background-color","#E9E9E4");
+});
+</code></pre></div></div>
+
+<h2 id="mousemovedatafn">mousemove([[data],fn])</h2>
+
+<p>当鼠标指针在指定的元素中移动时，就会发生 mousemove 事件。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//获得鼠标指针在页面中的位置：
+$(document).mousemove(function(e){
+  $("span").text(e.pageX + ", " + e.pageY);
+});
+</code></pre></div></div>
+
+<h2 id="mouseoutdatafn">mouseout([[data],fn])</h2>
+
+<p>当鼠标指针从元素上移开时，发生 mouseout 事件。</p>
+
+<p>该事件大多数时候会与 <a href="http://jquery.cuishifeng.cn/mouseover.html">mouseover</a> 事件一起使用。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//当鼠标从元素上移开时，改变元素的背景色
+$("p").mouseout(function(){
+  $("p").css("background-color","#E9E9E4");
+});
+</code></pre></div></div>
+
+<h2 id="mouseoverdatafn">mouseover([[data],fn])</h2>
+
+<p>当鼠标指针位于元素上方时，会发生 mouseover 事件。</p>
+
+<p>该事件大多数时候会与 <a href="http://jquery.cuishifeng.cn/mouseout.html">mouseout</a> 事件一起使用。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//当鼠标指针位于元素上方时时，改变元素的背景色
+$("p").mouseover(function(){
+  $("p").css("background-color","yellow");
+});
+</code></pre></div></div>
+
+<h2 id="mouseupdatafn">mouseup([[data],fn])</h2>
+
+<p>当在元素上放松鼠标按钮时，会发生 mouseup 事件。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//当松开鼠标按钮时，隐藏或显示元素
+$("button").mouseup(function(){
+  $("p").slideToggle();
+});
+</code></pre></div></div>
+
+<h2 id="resizedatafn">resize([[data],fn])</h2>
+
+<p>当调整浏览器窗口的大小时，发生 resize 事件。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//对浏览器窗口调整大小进行计数：
+$(window).resize(function() {
+  $('span').text(x+=1);
+});
+</code></pre></div></div>
+
+<h2 id="scrolldatafn">scroll([[data],fn])</h2>
+
+<p>当用户滚动指定的元素时，会发生 scroll 事件。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//当页面滚动条变化时，执行的函数:
+$(window).scroll( function() { /* ...do something... */ } );
+
+//对元素滚动的次数进行计数：
+$("div").scroll(function() {
+  $("span").text(x+=1);
+});
+</code></pre></div></div>
+
+<h2 id="selectdatafn">select([[data],fn])</h2>
+
+<p>当 textarea 或文本类型的 input 元素中的文本被选择时，会发生 select 事件。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//触发所有input元素的select事件:
+$("input").select();
+
+//当文本框中文本被选中时执行的函数:
+$(":text").select( function () { /* ...do something... */ } );
+</code></pre></div></div>
+
+<h2 id="submitdatafn">submit([[data],fn])</h2>
+
+<p>当提交表单时，会发生 submit 事件。该事件只适用于表单元素。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//提交本页的第一个表单:
+$("form:first").submit();
+
+如果你要阻止表单提交::
+$("form").submit( function () {
+  return false;
+} );
+</code></pre></div></div>
+
+<h2 id="unloaddatafn">unload([[data],fn])</h2>
+
+<p>在当用户离开页面时，会发生 unload 事件。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//页面卸载的时候弹出一个警告框:
+$(window).unload( function () { alert("Bye now!"); } );
+</code></pre></div></div>
+
+
+  </section>
+</article>
+
+<section>
+
+            <div class="content-play">
+              <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">打赏一个呗</a></p>
+              <div class="hide_box-play"></div>
+              <div class="shang_box-play">
+                <a class="shang_close-play" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="/images/payimg/close.jpg" alt="取消" /></a>
+                <div class="shang_tit-play">
+                  <p>感谢您的支持，我会继续努力的!</p>
+                </div>
+                <div class="shang_payimg">
+                    <img src="/images/payimg/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+              <div class="shang_payimg">    
+                    <img src="/images/payimg/weipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+                <div class="pay_explain">扫码打赏，你说多少就多少</div>
+                <div class="shang_payselect">
+                  <div class="pay_item checked" data-id="alipay">
+                    <span class="pay_logo"><img src="/images/payimg/alipay.jpg" alt="支付宝" /></span>
+                  </div>
+                  <div class="pay_item" data-id="weipay">
+                    <span class="pay_logo"><img src="/images/payimg/wechat.jpg" alt="微信" /></span>
+                  </div>
+                </div>
+                <div class="shang_info-play">
+                  <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+            function dashangToggle(){
+              $(".hide_box-play").fadeToggle();
+              $(".shang_box-play").fadeToggle();
+            }
+            </script>
+
+            <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+
+            <style type="text/css">
+              .content-play{width:80%;margin-top: 20px;margin-bottom: 10px;height:40px;}
+              .hide_box-play{z-index:999;filter:alpha(opacity=50);background:#666;opacity: 0.5;-moz-opacity: 0.5;left:0;top:0;height:99%;width:100%;position:fixed;display:none;}
+              .shang_box-play{width:540px;height:540px;padding:10px;background-color:#fff;border-radius:10px;position:fixed;z-index:1000;left:50%;top:50%;margin-left:-280px;margin-top:-280px;border:1px dotted #dedede;display:none;}
+              .shang_box-play img{border:none;border-width:0;}
+              .dashang{display:block;width:100px;margin:5px auto;height:25px;line-height:25px;padding:10px;background-color:#E74851;color:#fff;text-align:center;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;}
+              .dashang:hover{opacity:0.8;padding:15px;font-size:18px;}
+              .shang_close-play{float:right;display:inline-block;
+                margin-right: 10px;margin-top: 20px;
+              }
+              .shang_logo{display:block;text-align:center;margin:20px auto;}
+              .shang_tit-play{width: 100%;height: 75px;text-align: center;line-height: 66px;color: #a3a3a3;font-size: 16px;background: url('/images/payimg/cy-reward-title-bg.jpg');font-family: 'Microsoft YaHei';margin-top: 7px;margin-right:2px;}
+              .shang_tit-play p{color:#a3a3a3;text-align:center;font-size:16px;}
+              .shang_payimg{width:140px;padding:10px;padding-left: 80px; /*border:6px solid #EA5F00;**/margin:0 auto;border-radius:3px;height:140px;display:inline-block;}
+              .shang_payimg img{display:inline-block;margin-right:10px;float:left;text-align:center;width:140px;height:140px; }
+              .pay_explain{text-align:center;margin:10px auto;font-size:12px;color:#545454;}
+              .shang_payselect{text-align:center;margin:0 auto;margin-top:40px;cursor:pointer;height:60px;width:500px;margin-left:110px;}
+              .shang_payselect .pay_item{display:inline-block;margin-right:140px;float:left;}
+              .shang_info-play{clear:both;}
+              .shang_info-play p,.shang_info-play a{color:#C3C3C3;text-align:center;font-size:12px;text-decoration:none;line-height:2em;}
+            </style>
+
+       <ul class="pager">
+        
+        <li class="previous">
+            <a href="/2019/08/jQuary-%E6%93%8D%E4%BD%9CDOM/" data-toggle="tooltip" data-placement="top" title="JQuery操作DOM">上一篇：  <span>JQuery操作DOM</span>
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2019/08/jQuery-%E5%B1%9E%E6%80%A7/" data-toggle="tooltip" data-placement="top" title="JQuery-属性">下一篇：  <span>JQuery-属性</span>
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+<section class="post-comments">
+
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://localhost:4000/2019/08/jQuery-%E4%BA%8B%E4%BB%B6/";
+        this.page.identifier = "/2019/08/jQuery-%E4%BA%8B%E4%BB%B6/";
+    };
+    var disqus_shortname = 'leopard';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+
+  
+
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <div class = "footer_div">  
+        <nav class="cover-navigation navigation--social">
+          <ul class="navigation">
+
+          
+          <!-- Github -->
+          <li class="navigation__item_social">
+            <a href="https://github.com/zcxiao74" title="@zcxiao74 的 Github" target="_blank">
+              <div class="footer-social-icon" style="background:url(/images/github.png);"></div>
+            </a>
+          </li>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+
+          
+          <!-- Email -->
+          <li class="navigation__item_social">
+            <a href="mailto:13546680704@163.com" title="Contact me">
+              <div class="footer-social-icon" style="background:url(/images/email.png);"></div>
+            </a>
+          </li>
+          
+          
+          <!-- RSS -->
+          <li class="navigation__item_social">
+            <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+              <div class="footer-social-icon" style="background:url(/images/rss.png);"></div>
+              <span class="label">RSS</span>
+            </a>
+          </li>
+
+          </ul>
+        </nav>
+
+        </div>
+
+        <div class = "footer_div">  
+           <p class="copyright text-muted">
+            Copyright &copy; 潇授 2019 Theme by <a href="http://baixin.io/">leopardpan</a> |
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=leopardpan&repo=leopardpan.github.io&type=star&count=true" >
+            </iframe>
+            </p>
+        	<div align="right">
+    			<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+          <!-- 访问统计 -->
+          <span id="busuanzi_container_site_pv">
+            本站总访问量
+            <span id="busuanzi_value_site_pv"></span>次
+          </span>
+
+        </div>
+        <div>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+
+</html>
