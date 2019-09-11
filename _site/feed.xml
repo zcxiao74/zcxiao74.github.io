@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>潇授</title>
+    <title>兄弟会-张冲霄</title>
     <description>欢迎来到我的个人站~</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 11 Sep 2019 10:50:16 +0800</pubDate>
-    <lastBuildDate>Wed, 11 Sep 2019 10:50:16 +0800</lastBuildDate>
+    <pubDate>Wed, 11 Sep 2019 11:21:29 +0800</pubDate>
+    <lastBuildDate>Wed, 11 Sep 2019 11:21:29 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
