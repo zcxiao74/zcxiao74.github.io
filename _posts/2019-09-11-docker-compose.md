@@ -2,7 +2,7 @@
 layout: post
 title: "docker-compose"
 date: 2019-09-11
-tags: 容器  
+tags: docker  
 ---
 # docker-compose
 

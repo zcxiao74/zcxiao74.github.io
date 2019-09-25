@@ -2,7 +2,7 @@
 layout: post
 title: "Docker安装"
 date: 2019-09-11
-tags: 容器  
+tags: docker  
 ---
 # Ubuntu Docker安装
 
