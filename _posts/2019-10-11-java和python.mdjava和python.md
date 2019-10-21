@@ -89,6 +89,7 @@ print("My name is {}, age is {}".format("xiao", 25))
 ### 内建函数
 ```
 						python				java
+						
 第一个字符大写		capitalize()
 空格填充且居中		center(width)
 指定字符的数量		count(str,beg,end)
@@ -211,6 +212,9 @@ for (Integer i : list) {
 }
 System.out.println("----------");
 
+//lambda
+list.forEach(c -> System.out.print(c + " "));
+
 //iterator
 Iterator it = list.iterator();
 while (it.hasNext()) {
@@ -270,6 +274,14 @@ while (it.hasNext()) {
     Map.Entry e = (Map.Entry) it.next();
     System.out.println(e.getKey() + ":" + e.getValue());
 }
+
+//entrySet简写
+for (Map.Entry<String, Integer> entry : map.entrySet()) {
+	System.out.println(entry.getKey() + " " + entry.getValue());
+}
+
+//java8遍历
+	map.forEach((k, v) -> System.out.println(k + " " + v));
 ```
 
 ```
@@ -427,26 +439,155 @@ res = reduce(func,tuple)
 res = filter(func,tuple)
 ```
 
+java:
+```
+stream()
+filter()
+limit()
+sorted()
+map()
+forEach()
+Collectors
+```
+
 ### 语法特性与编程习惯(如链式语法,闭包等)
+
 java8新特性:
+
+Java：
 ```
-Lambda表达式
- 
-函数式接口
- 
-Stream
- 
-Optional
- 
-Predicate
- 
-Function
- 
-Consumer
- 
-Filter
- 
-Map-Reduce
- 
-新的Date API
+1	Lambda 表达式
+2	方法引用
+3	函数式接口
+4	默认方法
+5	Stream
+6	Optional 类
+7	Nashorn, JavaScript 引擎
+8	新的日期时间 API
+9	Base64
 ```
+
+## 内置高级功能
+
+### 并发模型(多线程,多进程)
+
+java:
+```
+线程的创建方式:
+1.继承Thread类重写run()
+2.实现Runnable接口重写run()
+
+原理：
+run()顺序执行，start()交错执行
+
+共享数据情况,解决方案在访问变量方法中增加synchronized关键字
+
+常用方法：
+getId()			获取线程编号
+getName()		获取线程名称
+getPriority()	获取线程优先级
+setPriority()	更改线程优先级
+join(num)		等待线程终止
+sleep()			线程睡眠
+stop()			线程停止(不建议)
+isDaemon()		判断是否为守护线程
+synchronized()	锁
+```
+
+python:
+```
+多进程：
+from multiprocessing import Process
+p1 = Process(target=func, args=("xiao",))
+
+多线程：
+import threading
+t1 = threading.Thread(target=func, args=("xiao",))
+
+进程池：
+from multiprocessing import Pool
+pool = Pool(processes=3)
+pool.apply_async(func=func, args=(name,))#name是参数的集合
+
+协程：
+import gevent
+from gevent import monkey
+
+monkey.patch_all()
+g1 = gevent.spawn(func, "xiao")
+gevent.joinall([g1, g2, g3])
+```
+
+### 系统调用
+
+### 磁盘文件管理
+
+java:
+```
+FileOutputStream	字节流写入
+FileInputStream		字节流读取
+
+BufferedWriter()	字符流写入
+BufferedWriter bw = new BufferedWriter(
+new OutputStreamWriter(
+new FileOutputStream("readme.txt")));
+
+BufferedReader()	字符流读取
+BufferedReader br = new BufferedReader(
+new InputStreamReader(
+new FileInputStream("readme.txt")));
+
+PrintStream()		打印各种数据内容并自动刷新
+取代BufferedWriter()，和BufferedReader()搭配
+PrintStream ps = new PrintStream(
+new FileOutputStream("readme.txt"));
+
+ObjectOutputStream()	以对象为单位写入 
+只支持实现java.io.Serializable接口的对象
+ObjectOutputStream oos = new ObjectOutputStream(
+new FileOutputStream("readme.txt"));
+
+ObjectInputStream()	以对象为单位读取
+ObjectInputStream ois = new ObjectInputStream(
+new FileInputStream("readme.txt"));
+
+```
+
+python:
+```
+with open("readme.txt","w",encoding="utf-8") as io:
+	io.write("xiao")
+
+with open("readme.txt","r",encoding="utf-8") as io:
+	io.read("xiao")
+```
+
+### 数据库操作
+
+python:
+```
+import pymysql
+
+con = pymysql.connect("localhost", "root", "mysql", "test")
+cursor = con.cursor()
+sql = "insert into user (username,password) values('xiao',123)"
+cursor.execute(sql)
+con.commit()
+cursor.fetchall()
+cursor.close()
+con.close()
+```
+
+java:
+```
+Class.forName("com.mysql.cj.jdbc.Driver");
+String url = "jdbc:mysql://localhost/test";
+String user = "root";
+String passwd = "mysql";
+Connection conn = DriverManager.getConnection(url, user, passwd);
+Statement state = conn.createStatement();
+String s = "insert into user (id,username,password) values(2,'ying',123)";
+state.executeUpdate(s);
+```
+
+### 网络支持
