@@ -89,7 +89,7 @@ print("My name is {}, age is {}".format("xiao", 25))
 ### 内建函数
 ```
 						python				java
-						
+
 第一个字符大写		capitalize()
 空格填充且居中		center(width)
 指定字符的数量		count(str,beg,end)
@@ -198,7 +198,7 @@ Map:
 
 ### 容器的遍历
 
-- List:
+List:
 ```
 //for
 for (int i = 0; i < list.size(); i++) {
@@ -234,7 +234,7 @@ for i, j in enumerate(list):
     print(i, j)
 ```
 
-- set
+set
 ```
 //foreach
 for (Integer integer : set) {
@@ -258,7 +258,7 @@ for i, j in enumerate(set):
     print(i, j)
 ```
 
-- map/dict
+map/dict
 ```
 //keySet
 Set<Integer> set = map.keySet();
@@ -308,7 +308,7 @@ print("--------")
 
 ```
 
-- tuple
+tuple
 ```
 for i in tuple:
     print(i, end=" ")
@@ -324,6 +324,7 @@ for i in iter(tuple):
 ### 容器深浅复制
 
 python:
+```
 对于数字和字符串，赋值、浅拷贝、深拷贝在内存当中用的都是同一块地址
 对于字典、列表、元组等其他类型，赋值的内存地址不会变化。
 对于字典、列表、元组等类型，浅拷贝只拷贝第一层地址。
@@ -331,10 +332,13 @@ python:
 
 使用浅拷贝修改新的字典的值之后，原来的字典里面的cpu值也被修改了
 深拷贝的时候，只有新的字典的cpu值被修改了，原来的字典里面的cpu值没有变
+```
 
 java:
+```
 浅拷贝：对基本数据类型进行值传递，对引用数据类型进行引用传递般的拷贝，此为浅拷贝。
 深拷贝：对基本数据类型进行值传递，对引用数据类型，创建一个新的对象，并复制其内容，此为深拷贝。
+```
 
 ### 容器的序列化与反序列化
 
@@ -542,7 +546,7 @@ PrintStream()		打印各种数据内容并自动刷新
 PrintStream ps = new PrintStream(
 new FileOutputStream("readme.txt"));
 
-ObjectOutputStream()	以对象为单位写入 
+ObjectOutputStream()	以对象为单位写入
 只支持实现java.io.Serializable接口的对象
 ObjectOutputStream oos = new ObjectOutputStream(
 new FileOutputStream("readme.txt"));
@@ -591,3 +595,108 @@ state.executeUpdate(s);
 ```
 
 ### 网络支持
+
+ISO(国际标准化组织)划分七层网络模型：
+应用层、表示层、会话层、传输层、网络层、数据链路层、物理层
+
+java(tcp):
+
+server:
+```
+ServerSocket ss = new ServerSocket(8888);
+Socket s = ss.accept();
+
+BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
+PrintStream ps = new PrintStream(s.getOutputStream());
+Scanner sc = new Scanner(System.in);
+
+while (true) {
+	//接收
+	String msg = br.readLine();
+	System.out.println(s.getInetAddress() + ":" + msg);
+	if ("bye".equals(msg)) {
+	    System.out.println(s.getInetAddress() + "已断开连接");
+	    break;
+	}
+
+	//发送
+	//System.out.print("server:");
+	//ps.println(sc.next());
+}
+```
+
+client:
+```
+Socket s = new Socket("192.168.196.74", 8888);
+
+PrintStream ps = new PrintStream(s.getOutputStream());
+Scanner sc = new Scanner(System.in);
+BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
+
+while (true) {
+	//发送
+	System.out.print("client:");
+	String msg = sc.next();
+	ps.println(msg);
+	if ("bye".equals(msg)) {
+	    System.out.println("聊天结束");
+	    break;
+	}
+
+	//接收
+	//String str = br.readLine();
+	//System.out.println("server:" + str);
+	}
+```
+
+python(tcp):
+
+server:
+```
+socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+socket.bind(('192.168.196.74', 1996))
+socket.listen(3)
+
+c_socket, c_addr = socket.accept()
+
+while True:
+    # 接收客户端的数据
+    c_data = c_socket.recv(1024).decode("gbk")
+    print("client:", c_data)
+    if "bye" == c_data:
+        print("client结束聊天")
+        break
+
+    # 给客户端发数据
+    s_data = input("server:")
+    c_socket.send(s_data.encode("gbk"))
+    if "bye" == s_data:
+        print("server聊天结束")
+        break
+
+c_socket.close()
+```
+
+client:
+```
+socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+socket.bind(("192.168.196.74", 2581))
+socket.connect(("192.168.196.74", 1996))
+
+while True:
+
+    # 发送数据
+    c_data = input("client:")
+    socket.send(c_data.encode("gbk"))
+    if "bye" == c_data:
+        print("client结束聊天")
+        break
+
+    # 接收数据
+    s_data = socket.recv(1024).decode('gbk')
+    print("server:", s_data)
+    if "bye" == s_data:
+        print("server结束聊天")
+        break
+socket.close()
+```
