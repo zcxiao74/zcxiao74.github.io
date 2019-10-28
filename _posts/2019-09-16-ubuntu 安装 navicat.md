@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Navicat安装"
-date: 2019-10-21
+title: "ubuntu 安装 navicat"
+date: 2019-10-16
 tags: 数据库
 ---
 
-# Navicat安装
+# ubuntu 安装 navicat
 
 ## 乱码解决
 ```
@@ -73,8 +73,9 @@ Terminal=0
 ```
 保存退出。
 要保证上述俩路径正确。
+```
 cp /usr/share/applications/navicat.desktop ~/桌面
-
+```
 
 ## navicat破解
 首次运行start_navicat时会在home下新建一个.navicatx64的文件夹，删了即可再次试用。
