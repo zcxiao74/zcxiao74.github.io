@@ -2,7 +2,7 @@
 layout: post
 title: "ubuntu 安装 mysql"
 date: 2019-10-21
-tags: mysql
+tags: 数据库
 ---
 
 # ubuntu 安装 mysql
