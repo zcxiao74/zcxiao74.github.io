@@ -59,7 +59,7 @@ apt-get install vim
 
 ```
 apt-get install ssh
-/etc/init.d/ssh start	# 开启sshd服务器:
+/etc/init.d/ssh start	# 开启sshd服务器
 vim ~/.bashrc
 /etc/init.d/ssh start	# 最后一行添加(自启服务)
 ```
@@ -294,9 +294,24 @@ slave02
 ```
 master:
 cd /usr/local/hadoop-3.2.1
-bin/hdfs namenode -format
+bin/hdfs namenode -format(格式化)
 sbin/start-all.sh
 
 浏览器检查：http://172.17.0.2:9870/
+```
+
+##　重启容器后
+
+```
+注意容器启动顺序不能乱：
+docker start master slave01 slave02
+
+docker attach master
+docker attach slave01
+docker attach slave02
+
+echo -e "172.17.0.2\\tmaster\\n172.17.0.3\\tslave01\\n172.17.0.4\\tslave02" >> /etc/hosts
+
+/usr/local/hadoop-3.2.1/sbin/start-all.sh
 ```
 
