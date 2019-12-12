@@ -33,3 +33,17 @@ sudo apt purge mysql-*
 sudo rm -rf /etc/mysql/ /var/lib/mysql
 sudo apt autoremove
 ```
+
+## 修改密码
+
+```
+mysql -u root -p
+use mysql;
+update user set authentication_string=PASSWORD("mysql") where user='root';
+flush privileges;
+quit;
+/etc/init.d/mysql restart;
+```
+
+
+
