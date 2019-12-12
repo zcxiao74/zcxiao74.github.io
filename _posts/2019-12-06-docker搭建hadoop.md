@@ -83,6 +83,7 @@ ChallengeResponseAuthentication no
 UsePAM yes
 PrintLastLog no
 
+vim /etc/ssh/ssh_config
 StrictHostKeyChecking no(大约35行)
 ```
 
@@ -216,7 +217,7 @@ vim hdfs-site.xml
 	<property>
 		<name>dfs.namenode.http-address</name>
 		<value>master:9870</value>
-		<description>注意每个节点配置各自的</description>
+		<description>注意每个节点配置各自的,9870不变</description>
 	</property>
 </configuration>
 
